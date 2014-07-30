@@ -1,0 +1,236 @@
+\hang\m\hb{\tb{"\"'} <letter>} -- typeset \s{letter} with an acute accent (e.g. \'e).
+
+\hang\m\hb{\tb{"\"=} <letter>} -- typeset \s{letter} with a macron (e.g. \=e).
+
+\hang\m\hb{\tb{"\"?} <letter>} -- typeset \s{letter} with a cedilla (e.g. \?c).
+
+\hang\m\hb{\tb{"\"@} <letter>} -- typeset \s{letter} with a ring above  (e.g. \@a).
+
+\hang\m\tb{"\"AE} -- `\AE'.
+
+\hang\m\tb{"\"L} -- `\L'.
+
+\hang\m\tb{"\"O} -- `\O'.
+
+\hang\m\tb{"\"OE} -- `\OE'.
+
+\hang\m\hb{\tb{"\"\#}} -- `\#'.
+
+\hang\m\hb{\tb{"\"\$}} -- `\$'.
+
+\hang\m\hb{\tb{"\"\%}} -- `\%'.
+
+\hang\m\hb{\tb{"\"\\}} -- `\\'.
+
+\hang\m\hb{\tb{"\"\_}} -- `\_'.
+
+\hang\m\hb{\tb{"\"\char126} <letter>} -- typeset \s{letter} with a tilde accent (e.g. \~e).
+
+\hang\m\hb{\tb{"\"\char34} <letter>} -- typeset \s{letter} with a diaeresis (e.g. \"i).
+
+\hang\m\hb{\tb{"\"\path{move 0 0 line 0 5 line 13 5 line 13 0}}} -- normal inter-word space.
+
+\hang\m\hb{\tb{"\"\{}} -- `\{'.
+
+\hang\m\hb{\tb{"\"\}}} -- `\}'.
+
+\hang\m\hb{\tb{"\"^} <letter>} -- typeset \s{letter} with a circumflex accent (e.g. \^e).
+
+\hang\m\hb{\tb{"\"`} <letter>} -- typeset \s{letter} with a grave accent (e.g. \`e).
+
+\hang\m\tb{"\"ae} -- `\ae'.
+
+\hang\m\hb{\tb{"\"b} <text>} -- typeset \s{text} in the current boldface font (\p{bfont}).
+
+\hang\m\hb{\tb{"\"bfont} <font>} -- set the current boldface font to \s{font}.
+
+\hang\m\hb{\tb{"\"bigskip}} -- vertical space equal to the \p bigskipamount.
+
+\hang\m\tb{"\"bullet} -- `\bullet'.
+
+\hang\m\hb{\tb{"\"centerline} <text>} -- typeset \s{text} centered on a line of the current \p{hsize}.
+
+\hang\m\hb{\tb{"\"circle} <diameter>} -- draw a circle of diameter \s{diameter} using the current \p color and \p stroke.
+
+\hang\m\hb{\tb{"\"circlef} <diameter>} -- draw a filled circle of diameter \s{diameter} using the current \p color and \p stroke.
+
+\hang\m\hb{\tb{"\"color} <color>} -- typeset and draw all subsequent text (with the exception of verse numbers typeset by \p v and \p vv) and graphics using \s{color}.
+
+\hang\m\tb{"\"copyright} -- `\copyright'.
+
+\hang\m\tb{"\"degree} -- `\degree'.
+
+\hang\m\tb{"\"div} -- `\div'.
+
+\hang\m\hb{\tb{"\"dots}} -- `\dots' (ellipsis).
+
+\hang\m\hb{\tb{"\"draw} <graphics material>} -- draw \s{graphics material}.  
+
+\hang\m\hb{\tb{"\"ellipse} <width> <height>} -- draw a \s{width} by \s{height} ellipse using the current \p color and \p stroke.
+
+\hang\m\hb{\tb{"\"ellipsef} <width> <height>} -- draw a filled \s{width} by \s{height} ellipse using the current \p color and \p stroke.
+
+\hang\m\hb{\tb{"\"empty} <width> <height>} -- make an empty \s{width} by \s{height} box.
+
+\hang\m\hb{\tb{"\"font} <font>} -- typeset all subsequent text (with the exception of verse numbers typeset by \p v and \p vv) using \s{font}.
+
+\hang\m\hb{\tb{"\"frame} <text>} -- typeset \s{text} with a rectangular frame drawn around it.
+
+\hang\m\hb{\tb{"\"halign \{} <table specification> \tb"}"} -- typeset the \s{table specification} using the current value of \p{tabskip}.
+
+\hang\m\hb{\tb{"\"hang}} -- typeset the current paragraph with a handing indent with an indentation width given by the value of \p parindent.
+
+\hang\m\hb{\tb{"\"hangindent} <dimension>} -- typeset the current paragraph with a handing indent with an indentation width of \s{dimension}.
+
+\hang\m\hb{\tb{"\"hb} <horizontal material>} -- typeset \s{horizontal material} inside an indivisible horizontal box.
+
+\hang\m\hb{\tb{"\"hbs} <spread> <horizontal material>} -- typeset \s{horizontal material} inside an indivisible horizontal box increased from it's natural width by \s{spread}, stretching or shrinking glue as appropriate.
+
+\hang\m\hb{\tb{"\"hbt} <width> <horizontal material>} -- typeset \s{horizontal material} inside an indivisible horizontal box of width \s{width}, stretching or shrinking glue as appropriate.
+
+\hang\m\hb{\tb{"\"hfil}} -- horizontal fill glue.
+
+\hang\m\hb{\tb{"\"hphantom} <argument>} -- an empty box with "0" height and width equal to the width of \s{argument}.
+
+\hang\m\hb{\tb{"\"hrule}} -- draw a horizontal rule.
+
+\hang\m\hb{\tb{"\"hsize} <dimension>} -- typeset paragraphs with lines of text of width \s{dimension}.
+
+\hang\m\hb{\tb{"\"hskip} <glue>} -- horizontal glue specified by \s{glue}.
+
+\hang\m\hb{\tb{"\"hss}} -- horizontal stretch or shrink glue.
+
+\hang\m\hb{\tb{"\"i} <text>} -- typeset \s{text} in the current italic font (\p{ifont}).
+
+\hang\m\hb{\tb{"\"ifont} <font>} -- set the current italic font to \s{font}.
+
+\hang\m\hb{\tb{"\"image} <image file>} -- render \s{image file} at the current position.
+
+\hang\m\hb{\tb{"\"indent}} -- place the typesetter into horizontal mode and indent by \p parindent.
+
+\hang\m\hb{\tb{"\"input} <file>} -- read (assuming \t "UTF-8" encoding) and process \s{file} as if it's contents appeared at the current point in the manuscript.
+
+\hang\m\tb{"\"invexclamation} -- `\invexclamation'.
+
+\hang\m\tb{"\"invquestion} -- `\invquestion'.
+
+\hang\m\hb{\tb{"\"item} <item number> <text>} -- typeset \s{text} with a hanging indent equal to the paragraph indentation, and with \s{item number} inside the top indent.
+
+\hang\m\hb{\tb{"\"itemitem} <item number> <text>} -- typeset \s{text} with a hanging indent equal to twice the paragraph indentation, and with \s{item number} inside the top indent.
+
+\hang\m\tb{"\"l} -- `\l'.
+
+\hang\m\hb{\tb{"\"leftkip} <glue>} -- use \s{glue} as the left margin spacing when typesetting paragraphs.
+
+\hang\m\hb{\tb{"\"line} <text>} -- typeset \s{text} on a line of width \p{hsize}, stretching or shrinking glue as appropriate.
+
+\hang\m\hb{\tb{"\"llap} <text>} -- typeset \s{text} to the left of the current position, overlapping what is there.
+
+\hang\m\hb{\tb{"\"load} <font file>} -- pre-load \s{font file}.
+
+\hang\m\hb{\tb{"\"lower} <distance> <text>} -- lower \s{text} by \s{distance}.
+
+\hang\m\hb{\tb{"\"m}} -- place the typesetter into horizontal mode making the first line of the paragraph flush with the left margin.
+
+\hang\m\hb{\tb{"\"medskip}} -- vertical space equal to the \p medskipamount.
+
+\hang\m\tb{"\"midpoint} -- `\midpoint'.
+
+\hang\m\tb{"\"o} -- `\o'.
+
+\hang\m\tb{"\"oe} -- `\oe'.
+
+\hang\m\hb{\tb{"\"par}} -- typeset the current horizontal list as a paragraph with the current values of \p{hsize}, \p{leftskip}, \p{rightskip}, and \p{parfillskip}.
+
+\hang\m\hb{\tb{"\"parfillskip} <glue>} -- add \s{glue} as the filler spacing at the end of the last line of a paragraph.
+
+\hang\m\hb{\tb{"\"parindent} <dimension>} -- indent the first line of paragraphs by \s{dimension}.
+
+\hang\m\hb{\tb{"\"parskip} <glue>} -- insert \s{glue} as the inter-paragraph spacing.
+
+\hang\m\hb{\tb{"\"path} <path>} -- draw \s{path}. The current values of \p color and \p stroke are used.
+
+\hang\m\hb{\tb{"\"phantom} <argument>} -- an empty box with ascent, descent and width equal to the ascent, descent and width of \s{argument}.
+
+\hang\m\tb{"\"pm} -- `\pm'.
+
+\hang\m\tb{"\"pounds} -- `\pounds'.
+
+\hang\m\hb{\tb{"\"qquad}} -- horizontal space equal to two em.
+
+\hang\m\hb{\tb{"\"quad}} -- horizontal space equal to one em.
+
+\hang\m\hb{\tb{"\"raise} <distance> <text>} -- raise \s{text} by \s{distance}.
+
+\hang\m\hb{\tb{"\"rectangle} <width> <height>} -- draw a \s{width} by \s{height} rectangle using the current \p color and \p stroke.
+
+\hang\m\hb{\tb{"\"rectanglef} <width> <height>} -- draw a filled \s{width} by \s{height} rectangle using the current \p color and \p stroke.
+
+\hang\m\hb{\tb{"\"rightkip} <glue>} -- use \s{glue} as the right margin spacing when typesetting paragraphs.
+
+\hang\m\hb{\tb{"\"rlap} <text>} -- typeset \s{text} to the right of the current position, overlapping what is there.
+
+\hang\m\hb{\tb{"\"rm} <text>} -- typeset text in the current roman font (\p{rmfont}).
+
+\hang\m\hb{\tb{"\"rmfont} <font>} -- set the current roman (or plain) font to \s{font}.
+
+\hang\m\hb{\tb{"\"s} <text>} -- typeset \s{text} in the current slant font (\p{sfont}).
+
+\hang\m\hb{\tb{"\"sc} <text>} -- typeset \s{text} in the current small caps font (\p{scfont}).
+
+\hang\m\hb{\tb{"\"scfont} <font>} -- set the current small caps font to \s{font}.
+
+\hang\m\hb{\tb{"\"sfont} <font>} -- set the current slant font to \s{font}.
+
+\hang\m\hb{\tb{"\"smallskip}} -- vertical space equal to the \p smallskipamount.
+
+\hang\m\hb{\tb{"\"space}} -- equivalent to typing a space (in between words) in the manuscript.
+
+\hang\m\hb{\tb{"\"t} <text>} -- typeset \s{text} in the current typewriter font (\p{tfont}).
+
+\hang\m\hb{\tb{"\"tabskip} <glue>} -- use \s{glue} as the inter-column spacing in tables typeset with \p{halign}.
+
+\hang\m\hb{\tb{"\"tb} <text>} -- typeset \s{text} in the current typewriter boldface font (\p{tbfont}).
+
+\hang\m\hb{\tb{"\"tbfont} <font>} -- set the current typewriter bold font to \s{font}.
+
+\hang\m\hb{\tb{"\"tfont} <font>} -- set the current typewriter (monospaced) font to \s{font}.
+
+\hang\m\hb{\tb{"\"thickness} <line thickness>} -- set \p stroke to \s{line thickness}.
+
+\hang\m\tb{"\"times} -- `\times'.
+
+\hang\m\hb{\tb{"\"translucent} <margin> <text>} -- typeset \s{text} inside a translucent box with margin \s{margin}.
+
+\hang\m\hb{\tb{"\"u} <text>} -- typeset \s{text} with an underline.
+
+\hang\m\hb{\tb{"\"v} <verse>} -- typeset a raise \s{verse} using \p vcolor and \p vfont.
+
+\hang\m\hb{\tb{"\"vb} <vertical material>} -- typeset \s{vertical material} inside an indivisible vertical box with a baseline that lines up with that of the last item of \s{vertical material}.
+
+\hang\m\hb{\tb{"\"vbs} <spread> <vertical material>} -- typeset \s{vertical material} inside an indivisible vertical box  increased from it's natural height by \s{spread}, stretching or shrinking glue as appropriate, with a baseline that lines up with that of the last item of \s{spread}.
+
+\hang\m\hb{\tb{"\"vbt} <height> <vertical material>} -- typeset \s{vertical material} inside an indivisible vertical box of height \s{height}, stretching or shrinking glue as appropriate, with a baseline that lines up with that of the last item of \s{height}.
+
+\hang\m\hb{\tb{"\"vcolor} <color>} -- typeset verse numbers (\p v and \p vv) using \s{color}.
+
+\hang\m\hb{\tb{"\"vfil}} -- vertical fill glue.
+
+\hang\m\hb{\tb{"\"vfont} <font>} -- set the current verse font to \s{font}.
+
+\hang\m\hb{\tb{"\"vphantom} <argument>} -- an empty box with "0" width, and ascent and descent equal to the ascent and descent of \s{argument}.
+
+\hang\m\hb{\tb{"\"vrule}} -- draw a vertical rule.
+
+\hang\m\hb{\tb{"\"vsize} <dimension>} -- force the main vertical box to be of height \s{dimension}, or it's natural height if \s{dimension} is "-1".
+
+\hang\m\hb{\tb{"\"vskip} <glue>} -- vertical glue specified by \s{glue}.
+
+\hang\m\hb{\tb{"\"vss}} -- vertical stretch or shrink glue.
+
+\hang\m\hb{\tb{"\"vt} <vertical material>} -- typeset \s{vertical material} inside an indivisible vertical box with a baseline that lines up with that of the first item of \s{vertical material}.
+
+\hang\m\hb{\tb{"\"vts} <spread> <vertical material>} -- typeset \s{vertical material} inside an indivisible vertical box increased from it's natural height by \s{spread}, stretching or shrinking glue as appropriate, with a baseline that lines up with that of the first item of \s{spread}.
+
+\hang\m\hb{\tb{"\"vtt} <height> <vertical material>} -- typeset \s{vertical material} inside an indivisible vertical box of height \s{height}, stretching or shrinking glue as appropriate, with a baseline that lines up with that of the first item of \s{height}.
+

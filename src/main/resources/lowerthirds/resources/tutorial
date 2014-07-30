@@ -1,0 +1,28 @@
+\title Tutorial
+
+\heading Introduction
+
+This program allows you to add text and simple graphics to a video.  Of course, this can be done with any video editor, but there are times when the video editor's graphical interface simply doesn't give you the control that you want or have the feature that you want.  This program lets you create transparent video overlay images (PNG files) using a typesetting markup language to describe the text and graphics in the overlay.
+
+You are doubtless wondering how this strange program works.  And what's up with that big checkered window?  And why did the tutorial pop up right as the program started?  Answering these questions (in reverse order), the tutorial came up right away because without it, you wouldn't have a clue what to do with this program.  Since it uses a certain file format and built-in markup language, you need to have a few examples in order to have a sense of how it works.  The big checkered window will be called the ``overlays window'', and that's where the overlay images will be rendered as you type.  The checkered pattern is just a background to show where the image is transparent, and the degree of opacity.  The editor window, which can be re-sized and moved around as you work, has two panes: the top pane is the actual editor, and the bottom pane displays errors as you type.  Errors won't crash the program (or they shouldn't) - all they do is stop the real time rendering as long as a particular error condition persists.  As you make an error go away by either fixing it or just by continuing to type, the text that you are typing will be immediately rendered again.  So, don't worry about errors, you will see them constantly as you work.
+
+\heading {Getting Started}
+
+To begin with, position this tutorial window in the bottom right corner of your screen so that you can type into the editor window and still see this entire window.  Now click on the editor window to see the cursor.  As you type into the editor window, you can scroll the tutorial window with you mouse wheel so that you don't have to keep clicking on the editor window to get the cursor.  You may now type the following (don't type the indentation, that's just to offset what you should type)
+
+\code`
+image1
+First image
+`
+
+The tab at the top of the overlays window should now say `image1', and you should see `First image' at the top of the checkered area, indented.  Now continue typing the following, beginning on a new line (yes, it starts with four dashes in a row)
+
+\code`
+----
+image2
+Second image
+`
+
+There should now be a second tab at the top of the overlays window that says `image2', and you should see `Second image' at the top of the checkered area, indented.
+
+The two tabs in the overlays window are transparent images with a bit of text in them (that you typed).  We can now export those images to a folder.  So now, make a folder (on your desktop or wherever) and call it whatever you like.  First, you need to save the contents of the editor (i.e. the five lines of text that you just typed) as a text file, so click on File~->~Save.  In the Save window, go into the folder you created and type a name for the text file (whatever name you would like).  And click on Save.  Now, to export the images to that same folder, click on File~->~Export.  The two images should now be in the folder.  You should check them with an image viewer, and observe that they are high def. (1280\times720) mostly transparent images with a bit of white opaque (non-transparent) text in them.

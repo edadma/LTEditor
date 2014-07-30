@@ -1,0 +1,5 @@
+\title {The Markup Language}
+
+\heading Introduction
+The typesetting markup language that is used to describe the text to be rendered is called \YAML\ (Yet Another Markup Language) and is yet another markup language. \YAML\ is very similar to Plain \TeX, but with some differences and simplifications. In other words, there are many features of \TeX\ that have not been implemented because they were either too hard to implement or not needed for this project.
+

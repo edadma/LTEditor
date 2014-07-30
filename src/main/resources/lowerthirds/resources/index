@@ -1,0 +1,5 @@
+\title {Alphabetical Summary of Commands}
+
+\def\p1{\t{"\"#1}}
+
+\input "resources/indexout"
