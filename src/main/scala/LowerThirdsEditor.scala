@@ -13,6 +13,7 @@ import javax.swing.KeyStroke._
 
 import io.Source
 import swing._
+import Dialog._
 import event._
 import Swing._
 import BorderPanel.Position._
@@ -58,7 +59,7 @@ class TS extends YAML
 //		loadFont( "Gentium Compact Regular", s"${fonts}GentiumPlusCompact-1.508${fs}GentiumPlusCompact-R.ttf" )
 //		loadFont( "Gentium Compact Italic", s"${fonts}GentiumPlusCompact-1.508${fs}GentiumPlusCompact-I.ttf" )
 //		loadFont( "Free Helvetian Roman Bold Condensed", s"${fonts}free-helvetian-roman-bold-condensed.pfb" )
-	
+
 //	val CM_PLAIN = Font( "Computer Modern Regular", PLAIN, 30 )
 //	val CM_BOLD = Font( "Computer Modern Bold", PLAIN, 30 )
 //	val CM_ITALIC = Font( "Computer Modern Italic", PLAIN, 30 )
@@ -123,6 +124,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 	lazy val overlayFrame =
 		new Frame
 		{
+			peer.setDefaultCloseOperation( javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE )
 			title = "Overlays"
 			resizable = false
 			contents =
@@ -133,17 +135,20 @@ object LowerThirdsEditor extends SimpleSwingApplication
 					pages += new TabbedPane.Page( "", new CheckeredTypesetterPanel(null, IMAGE_WIDTH, IMAGE_HEIGHT) )
 				}
 			pack
-			
-			override def closeOperation
-			{
-				visible = true
-			}			
 		}
-	lazy val top: MainFrame =
-		new MainFrame
+	var changesMade = false
+	lazy val top: Frame =
+		new Frame
 		{
-			def makeTitle( modified: Boolean ) = title = (if (modified) "*" else "") + documentTitle +
-				" - Lower Thirds Editor v" + VERSION + " (" + DATE + ")"
+			peer.setDefaultCloseOperation( javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE )
+			
+			def makeTitle( modified: Boolean ) =
+			{
+				changesMade = modified
+				title = (if (modified) "*" else "") + documentTitle + " - Lower Thirds Editor v" + VERSION + " (" + DATE + ")"
+			}
+
+			override def closeOperation = quit
 			
 			makeTitle( false )
 			location = new Point( 200, 90 )
@@ -205,6 +210,12 @@ object LowerThirdsEditor extends SimpleSwingApplication
 											messages.text = "can't export: no file has been chosen; do a save"
 										else
 											export( file, boxes, IMAGE_WIDTH, IMAGE_HEIGHT )
+									} )
+							contents +=
+								new MenuItem(
+									Action( "Quit" )
+									{
+										quit
 									} )
 						}
 					contents +=
@@ -348,6 +359,14 @@ object LowerThirdsEditor extends SimpleSwingApplication
 
 //	onEDT {editor.requestFocusInWindow}
 
+	override def quit
+	{
+		if (changesMade && showConfirmation( message = "You have unsaved material. Quit?", messageType = Message.Warning ) != Result.Yes)
+			return
+				
+		sys.exit( 0 )
+	}
+	
 	def saveAs =
 		textChooser.showSaveDialog( null ) match
 		{
