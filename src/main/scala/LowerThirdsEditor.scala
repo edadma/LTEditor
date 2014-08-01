@@ -192,7 +192,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 									{
 										accelerator = Some( getKeyStroke("ctrl S") )
 										
-										def apply = save										
+										def apply = save
 									} )
 							contents +=
 								new MenuItem(
@@ -361,17 +361,26 @@ object LowerThirdsEditor extends SimpleSwingApplication
 
 	override def quit
 	{
-		if (changesMade && showConfirmation( message = "You have unsaved material. Quit?", messageType = Message.Warning ) != Result.Yes)
-			return
-				
+		if (changesMade)
+			showConfirmation( message = "You have unsaved material. Save?", messageType = Message.Warning ) match
+			{
+				case Result.Yes =>
+					if (!save)
+						return
+				case Result.Closed => return
+				case _ =>
+			}
+
 		sys.exit( 0 )
 	}
 	
 	def saveAs =
 		textChooser.showSaveDialog( null ) match
 		{
-		case FileChooser.Result.Approve => write
-		case FileChooser.Result.Cancel =>
+		case FileChooser.Result.Approve =>
+			write
+			true
+		case FileChooser.Result.Cancel => false
 		}
 
 	def titled = textChooser.selectedFile ne null
@@ -382,16 +391,16 @@ object LowerThirdsEditor extends SimpleSwingApplication
 		else
 			"Untitled"
 			
-	def save
-	{
+	def save =
 		if (titled)
 		{
 			if (editor.modified)
 				write
+
+			true
 		}
 		else
 			saveAs
-	}
 	
 	def write
 	{
@@ -687,7 +696,6 @@ object LowerThirdsEditor extends SimpleSwingApplication
 				t('color) = WHITE
 				t('vcolor) = WHITE
 				t('hsize) = boxWidth
-				t('vsize) = -1
 				
 				boxes += file -> t.processDocument( buf.toString )
 			}

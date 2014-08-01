@@ -1,6 +1,6 @@
 name := "LTEditor"
 
-version := "0.1"
+version := "0.2"
 
 scalaVersion := "2.11.2"
 
@@ -15,7 +15,7 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-swing" % "1.0.1"
 resolvers += "Hyperreal Repository" at "http://hyperreal.ca/maven2"
 
 libraryDependencies ++= Seq(
-	"org.lteditor" %% "typesetter" % "0.1",
+	"org.lteditor" %% "typesetter" % "0.2",
 	"org.lteditor" %% "markup" % "0.1"
 	)
 
