@@ -1,6 +1,6 @@
--injars			/home/ed/target/lower-thirds-editor/scala-2.10/LowerThirds.jar
+-injars			/home/ed/projects/LTEditor/target/scala-2.11/LowerThirds.jar
 -libraryjars	<java.home>/lib/rt.jar
--outjars		/home/ed/target/lower-thirds-editor/lte.jar
+-outjars		/home/ed/projects/LTEditor/target/lower-thirds-editor/lte.jar
 
 -dontwarn scala.**
 
