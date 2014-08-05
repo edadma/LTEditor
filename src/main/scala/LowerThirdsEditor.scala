@@ -39,9 +39,9 @@ class TS extends YAML
 	val amspfb = s"${fonts}amsfonts${fs}pfb${fs}"
 	val cmttf = s"${fonts}cm-unicode-0.7.0${fs}"
 	val gentiumttf = s"${fonts}GentiumPlus-1.510${fs}"
-	
+
 	def out( o: Any ) = LowerThirdsEditor.messages.text = LowerThirdsEditor.messages.text + o.toString + '\n'
-	
+
 		Font.load( resource, s"${cmttf}cmunrm.ttf" )
 //		loadFont( "Computer Modern Smallcaps", s"${cmttf}cmcsc10.ttf" )
 		Font.load( resource, s"${cmttf}cmunrb.ttf" )
@@ -49,7 +49,7 @@ class TS extends YAML
 //		loadFont( "Computer Modern Italic", s"${cmttf}cmti12.ttf" )
 ////		loadFont( "Computer Modern Typewriter", s"${cmttf}cmuntt.ttf" )
 		Font.preload( resource, s"${cmttf}cmunssdc.ttf" )
-		
+
 		Font.load( resource, s"${cmttf}cmunorm.ttf" )
 //		loadFont( "Concrete Bold", s"${cmttf}cmunobx.ttf" )
 		Font.load( resource, s"${cmttf}cmunoti.ttf" )
@@ -67,7 +67,7 @@ class TS extends YAML
 //	val CM_TYPEWRITER = Font( "Computer Modern Typewriter", PLAIN, 30 )
 //	val CM_SMALLCAPS = Font.smallcaps( "Computer Modern Regular", PLAIN, 30 )
 //	val CM_SANS_CONDENSED_BOLD = Font( "Computer Modern Sans Condensed Bold", PLAIN, 18 )
-//	
+//
 //	val CONCRETE_PLAIN = Font( "Concrete Regular", PLAIN, 30 )
 //	val CONCRETE_BOLD = Font( "Concrete Regular", BOLD, 30 )
 //	val CONCRETE_ITALIC = Font( "Concrete Italic", PLAIN, 30 )
@@ -82,19 +82,19 @@ class TS extends YAML
 //	val GENTIUM_SLANT = Font( "Gentium Regular", ITALIC, 30 )
 //	val VERSE_FONT = Font( "Free Helvetian Roman Bold Condensed", PLAIN, 18 )
 //	val MONO_FONT = Font( "Droid Sans Mono", PLAIN, 30 )
-	
+
 //	def rmfont = CONCRETE_PLAIN
-//	
+//
 //	def bfont = CONCRETE_BOLD
-//	
+//
 //	def scfont = CONCRETE_SMALLCAPS
-//	
+//
 //	def ifont = CONCRETE_ITALIC
-//	
+//
 //	def sfont = CONCRETE_SLANT
-//	
+//
 //	def ttfont = CM_TYPEWRITER
-//	
+//
 //	def vfont = VERSE_FONT
 }
 
@@ -111,7 +111,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 	val FONT =
 		JFont.createFont( TRUETYPE_FONT, getClass.getResourceAsStream(s"${fonts}Droid${fs}DroidSansMono.ttf") ).
 			deriveFont( PLAIN, 16 )
-	
+
 	lazy val textChooser = new FileChooser
 	lazy val messages =
 		new TextArea
@@ -131,7 +131,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 				new TabbedPane
 				{
 					focusable = false
-					
+
 					pages += new TabbedPane.Page( "", new CheckeredTypesetterPanel(null, IMAGE_WIDTH, IMAGE_HEIGHT) )
 				}
 			pack
@@ -141,7 +141,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 		new Frame
 		{
 			peer.setDefaultCloseOperation( javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE )
-			
+
 			def makeTitle( modified: Boolean ) =
 			{
 				changesMade = modified
@@ -149,13 +149,13 @@ object LowerThirdsEditor extends SimpleSwingApplication
 			}
 
 			override def closeOperation = quit
-			
+
 			makeTitle( false )
 			location = new Point( 200, 90 )
 			editor.status = makeTitle
-			
+
 		var info = true
-			
+
 			reactions +=
 			{
 				case e: WindowActivated =>
@@ -163,11 +163,11 @@ object LowerThirdsEditor extends SimpleSwingApplication
 					{
 						if (SHOW_TUTORIAL)
 							onEDT {tutorialPage.visible = true}
-						
+
 						info = false
 					}
 			}
-			
+
 			menuBar =
 				new MenuBar
 				{
@@ -183,6 +183,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 										case FileChooser.Result.Approve =>
 											editor.text = readTextFile( new FileInputStream(textChooser.selectedFile) )
 											editor.unmodified
+											editor.caret.position = 0
 										case FileChooser.Result.Cancel =>
 										}
 									} )
@@ -191,7 +192,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 									new Action( "Save" )
 									{
 										accelerator = Some( getKeyStroke("ctrl S") )
-										
+
 										def apply = save
 									} )
 							contents +=
@@ -205,7 +206,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 									Action( "Export" )
 									{
 									val file = textChooser.selectedFile
-									
+
 										if (file eq null)
 											messages.text = "can't export: no file has been chosen; do a save"
 										else
@@ -226,16 +227,16 @@ object LowerThirdsEditor extends SimpleSwingApplication
 									new Action( "Undo" )
 									{
 										accelerator = Some( getKeyStroke("ctrl Z") )
-										
-										def apply = editor.undo										
+
+										def apply = editor.undo
 									} )
 							contents +=
 								new MenuItem(
 									new Action( "Redo" )
 									{
 										accelerator = Some( getKeyStroke("ctrl Y") )
-										
-										def apply = editor.redo										
+
+										def apply = editor.redo
 									} )
 							contents += new Separator
 							contents +=
@@ -243,24 +244,24 @@ object LowerThirdsEditor extends SimpleSwingApplication
 									new Action( "Copy" )
 									{
 										accelerator = Some( getKeyStroke("ctrl C") )
-										
-										def apply = editor.copy										
+
+										def apply = editor.copy
 									} )
 							contents +=
 								new MenuItem(
 									new Action( "Cut" )
 									{
 										accelerator = Some( getKeyStroke("ctrl X") )
-										
-										def apply = editor.cut										
+
+										def apply = editor.cut
 									} )
 							contents +=
 								new MenuItem(
 									new Action( "Paste" )
 									{
 										accelerator = Some( getKeyStroke("ctrl V") )
-										
-										def apply = editor.paste										
+
+										def apply = editor.paste
 									} )
 						}
 					contents +=
@@ -311,7 +312,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 									} )
 						}
 				}
-			
+
 			contents =
 				new SplitPane( Orientation.Horizontal,
 					new ScrollPane( editor )
@@ -329,10 +330,10 @@ object LowerThirdsEditor extends SimpleSwingApplication
 			val ABOUT_WIDTH = 800
 			val MARGIN = 10
 			val t = new TS
-			
+
 				t('hsize) = ABOUT_WIDTH - 2*MARGIN
 				t('vsize) = -1
-				
+
 			val map =
 				Map (
 					"fs" -> "/",//System.getProperties.getProperty( "file.separator" ),
@@ -354,7 +355,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 	lazy val markupPage = helpPage( "language", "Markup Language", 10, 800, 500 )
 	lazy val commandCategoryPage = helpPage( "commands", "Categorical Command Reference", 10, 800, 500 )
 	lazy val commandAlphabeticalPage = helpPage( "index", "Alphabetical Command Reference", 10, 800, 500 )
-	
+
 	onEDT {overlayFrame.visible = true}
 
 //	onEDT {editor.requestFocusInWindow}
@@ -373,7 +374,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 
 		sys.exit( 0 )
 	}
-	
+
 	def saveAs =
 		textChooser.showSaveDialog( null ) match
 		{
@@ -384,13 +385,13 @@ object LowerThirdsEditor extends SimpleSwingApplication
 		}
 
 	def titled = textChooser.selectedFile ne null
-	
+
 	def documentTitle =
 		if (titled)
 			textChooser.selectedFile.getName + " (" + textChooser.selectedFile.getParent + ")"
 		else
 			"Untitled"
-			
+
 	def save =
 		if (titled)
 		{
@@ -401,17 +402,17 @@ object LowerThirdsEditor extends SimpleSwingApplication
 		}
 		else
 			saveAs
-	
+
 	def write
 	{
 	val w = new BufferedWriter( new OutputStreamWriter(new FileOutputStream(textChooser.selectedFile), "UTF-8") )
-	
+
 		w.write( editor.text, 0, editor.text.length )
 		w.close
 		editor.unmodified
 		messages.text = "wrote " + (if (editor.text.isEmpty) 0 else editor.text.count( _ == '\n' ) + 1) + " lines to " + textChooser.selectedFile
 	}
-	
+
 	def stringReplace( s: String, replacement: Map[String, String] ): String =
 		"""\$\{([a-zA-Z]+)\}""".r replaceAllIn (s, m => Regex.quoteReplacement(stringReplace(replacement(m.group(1)), replacement)))
 
@@ -425,7 +426,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 				val rm = Font( resource, "cmunrm", "plain", fsize )
 //				val rm = Font( resource, "Serif", "plain", fsize )
 //				val rm = Font( resource, s"${gentiumttf}GentiumPlus-R.ttf", "plain", fsize )
-				
+
 					variable( 'font, rm )
 					variable( 'rmfont, rm )
 					variable( 'bfont, Font(resource, s"${cmttf}cmunrb.ttf", "plain", fsize) )
@@ -434,14 +435,14 @@ object LowerThirdsEditor extends SimpleSwingApplication
 					variable( 'sfont, Font(resource, s"${cmttf}cmunsl.ttf", "plain", fsize) )
 					variable( 'tfont, Font(resource, s"${cmttf}cmuntt.ttf", "plain", fsize) )
 					variable( 'tbfont, Font(resource, s"${cmttf}cmuntb.ttf", "plain", fsize) )
-					
+
 //					variable( 'bfont, Font(resource, s"Serif", "bold", fsize) )
 //					variable( 'scfont, Font(resource, s"${amspfb}cmcsc10.pfb", "plain", fsize) )
 //					variable( 'ifont, Font(resource, s"Serif", "slant", fsize) )
 //					variable( 'sfont, Font(resource, s"Serif", "slant", fsize) )
 //					variable( 'tfont, Font(resource, s"Monospaced", "plain", (fsize*.9).toInt) )
 //					variable( 'tbfont, Font(resource, s"Monospaced", "bold", (fsize*.9).toInt) )
-					
+
 //					variable( 'bfont, Font(resource, s"Serif", "bold", fsize) )
 //					variable( 'scfont, Font(resource, s"${amspfb}cmcsc10.pfb", "plain", fsize) )
 //					variable( 'ifont, Font(resource, s"Serif", "slant", fsize) )
@@ -449,10 +450,10 @@ object LowerThirdsEditor extends SimpleSwingApplication
 //					variable( 'tfont, Font(resource, s"Monospaced", "plain", (fsize*.9).toInt) )
 //					variable( 'tbfont, Font(resource, s"Monospaced", "bold", (fsize*.9).toInt) )
 				}
-			
+
 				t('hsize) = width - 2*margin
 				t('vsize) = -1
-				
+
 			val b = t processDocumentFromFile( getClass, "resources" + fs + page )
 
 			contents = new ScrollableTypesetterPanel( b, margin, height )
@@ -462,7 +463,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 			pack
 			centerOnScreen
 		}
-	
+
 	object EditorUndoManager extends UndoManager
 	{
 		def nextUndo = editToBeUndone
@@ -471,21 +472,21 @@ object LowerThirdsEditor extends SimpleSwingApplication
 	class EditorTextArea extends TextArea
 	{
 	var status: Boolean => Unit = _		// true means modified
-		
+
 		lineWrap = true
 		wordWrap = true
 		font = FONT
-		
+
 	private var unmodifiedEdit: UndoableEdit = null
 	private val um = EditorUndoManager
-		
+
 		def redo =
 			if (um.canRedo)
 			{
 				um.redo
 				status( modified )
 			}
-	
+
 		def undo =
 			if (um.canUndo)
 			{
@@ -500,7 +501,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 		}
 
 		def modified = unmodifiedEdit ne um.nextUndo
-		
+
 		peer.getDocument.addUndoableEditListener( um )
 		peer.getDocument.addUndoableEditListener(
 			new UndoableEditListener
@@ -510,7 +511,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 					status( true )
 				}
 			} )
-		
+
 		reactions +=
 		{
 			case _ =>
@@ -518,10 +519,10 @@ object LowerThirdsEditor extends SimpleSwingApplication
 				{
 					boxes = typeset( Source.fromString(text).getLines, IMAGE_WIDTH, IMAGE_HEIGHT )
 					messages.text = ""
-				
+
 				val tabs = overlayFrame.contents.head.asInstanceOf[TabbedPane]
 				val pages = tabs.pages
-				
+
 					for ((name, box) <- boxes)
 					{
 						pages.find (_.title == name) match
@@ -534,15 +535,15 @@ object LowerThirdsEditor extends SimpleSwingApplication
 								overlayFrame.repaint
 						}
 					}
-					
+
 				var index = 0
-				
+
 					while (index < pages.length)
 						if (boxes.exists( _._1 == pages(index).title ))
 							index += 1
 						else
 							pages.remove( index )
-							
+
 					if (pages.isEmpty)
 						pages += new TabbedPane.Page( "", new CheckeredTypesetterPanel(null, IMAGE_WIDTH, IMAGE_HEIGHT) )
 				}
@@ -558,7 +559,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 	{
 		preferredSize = (box.width.toInt + 2*margin + new ScrollBar().minimumSize.width + 1, h)
 	}
-	
+
 	class TypesetterPanel( var box: Box, margin: Int, w: Int = 0, h: Int = 0 ) extends Panel
 	{
 	protected val dim =
@@ -569,44 +570,44 @@ object LowerThirdsEditor extends SimpleSwingApplication
 
 		preferredSize = dim
 		focusable = false
-		
+
 		override def paint( g: Graphics2D )
 		{
 			super.paint( g )
-			
+
 			g.setRenderingHint( KEY_ANTIALIASING, VALUE_ANTIALIAS_ON )
-			
+
 //		val normalizing = GraphicsEnvironment.getLocalGraphicsEnvironment.getDefaultScreenDevice.getDefaultConfiguration.getNormalizingTransform
-//		
+//
 //			g.transform(normalizing)
 			paintBackground( g )
-			
+
 			if (box ne null)
 				box.draw( g, margin, margin )
 		}
-	
+
 		def paintBackground( g: Graphics2D ) {}
 	}
-	
+
 	class CheckeredTypesetterPanel( box: Box, w: Int, h: Int ) extends TypesetterPanel( box, 0, w, h )
 	{
 	val DARK_SQUARE_COLOR = new Color( 0x808080 )
 	val LIGHT_SQUARE_COLOR = new Color( 0xB0B0B0 )
 	val SQUARE_SIZE = 16
-	
+
 		override def paintBackground( g: Graphics2D )
 		{
 			g setColor LIGHT_SQUARE_COLOR
 			g.fillRect( 0, 0, dim._1, dim._2 )
 			g setColor DARK_SQUARE_COLOR
-			
+
 			for (x <- 0 until dim._1 by SQUARE_SIZE)
 				for (y <- 0 until dim._2 by SQUARE_SIZE)
 					if ((x/SQUARE_SIZE + y/SQUARE_SIZE)%2 == 1)
 						g.fillRect( x, y, SQUARE_SIZE, SQUARE_SIZE )
 		}
 	}
-	
+
 	def export( input: File, images: List[(String, Box)], imageWidth: Int, imageHeight: Int )
 	{
 	val parent = input.getParentFile
@@ -615,9 +616,9 @@ object LowerThirdsEditor extends SimpleSwingApplication
 		{
 			def accept( dir: File, name: String) = name endsWith ".png"
 		}
-		
+
 		parent.listFiles( pngfilter ) foreach (_.delete)
-		
+
 		for ((file, box) <- images)
 		{
 		val img = new BufferedImage( imageWidth, imageHeight, BufferedImage.TYPE_INT_ARGB_PRE )
@@ -626,15 +627,15 @@ object LowerThirdsEditor extends SimpleSwingApplication
 			g setColor BLACK
 			g setComposite TRANSPARENT
 			g.fillRect( 0, 0, imageWidth, imageHeight )
-			
+
 			g.setRenderingHint( KEY_ANTIALIASING, VALUE_ANTIALIAS_ON )
 			box.draw( g, 0, 0 )
 			ImageIO.write( img, "PNG", new File(parent, file + ".png") )
 		}
-		
+
 		messages.text = "Done exporting"
 	}
-	
+
 	def typeset( lines: Iterator[String], boxWidth: Int, boxHeight: Int ) =
 	{
 		def pathValid( name: String ) =
@@ -642,20 +643,20 @@ object LowerThirdsEditor extends SimpleSwingApplication
 			!name.exists( """/\<>:"|?*\t\r\n""" contains _ )
 
 	val boxes = new ListBuffer[(String, Box)]
-	
+
 		while (lines hasNext)
 		{
 		val file = lines next
-		
+
 			if (pathValid( file ))
 			{
 			val buf = new StringBuilder
-			
+
 				def copy: Unit =
 					if (lines hasNext)
 					{
 					val line = lines next
-					
+
 						if (!line.startsWith( "----" ))
 						{
 							buf append line
@@ -663,16 +664,16 @@ object LowerThirdsEditor extends SimpleSwingApplication
 							copy
 						}
 					}
-			
+
 				copy
-				
+
 			val t =
 				new TS
 				{
 				val fsize = 30
 				val rm = Font( resource, s"${cmttf}cmunorm.ttf", "plain", fsize )
 //				val rm = Font( resource, s"Serif", "plain", fsize )
-				
+
 					variable( 'font, rm )
 					variable( 'rmfont, rm )
 					variable( 'bfont, Font(resource, s"${cmttf}cmunorm.ttf", "bold", fsize) )
@@ -683,7 +684,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 					variable( 'tbfont, Font(resource, s"${cmttf}cmuntb.ttf", "plain", fsize) )
 //					variable( 'vfont, Font(resource, s"${fonts}free-helvetian-roman-bold-condensed.pfb", "plain", (.6*fsize).toInt) )
 					variable( 'vfont, Font(resource, "cmunssdc", "plain", (.6*fsize).toInt) )
-					
+
 //					variable( 'bfont, Font(resource, s"Serif", "bold", fsize) )
 //					variable( 'scfont, Font(resource, s"${amspfb}cmcsc10.pfb", "plain", fsize) )
 //					variable( 'ifont, Font(resource, s"Serif", "slant", fsize) )
@@ -692,17 +693,17 @@ object LowerThirdsEditor extends SimpleSwingApplication
 //					variable( 'tbfont, Font(resource, s"Monospaced", "bold", fsize) )
 //					variable( 'vfont, Font(resource, s"Monospaced", "bold", (.6*fsize).toInt) )
 				}
-				
+
 				t('color) = WHITE
 				t('vcolor) = WHITE
 				t('hsize) = boxWidth
-				
+
 				boxes += file -> t.processDocument( buf.toString )
 			}
 			else
 				sys.error( "invalid filename: \"" + file + '"' )
 		}
-		
+
 		boxes.toList
 	}
 }
