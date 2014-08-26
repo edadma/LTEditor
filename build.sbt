@@ -1,6 +1,10 @@
+import AssemblyKeys._
+
+import LaikaKeys._
+
 name := "LTEditor"
 
-version := "0.2"
+version := "0.3"
 
 scalaVersion := "2.11.2"
 
@@ -16,18 +20,22 @@ resolvers += "Hyperreal Repository" at "http://hyperreal.ca/maven2"
 
 libraryDependencies ++= Seq(
 	"org.lteditor" %% "typesetter" % "0.2",
-	"org.lteditor" %% "markup" % "0.1"
+	"org.lteditor" %% "markup" % "0.2"
 	)
 
 mainClass in (Compile, packageBin) := Some( "lowerthirds.LowerThirdsEditor" )
 
 mainClass in (Compile, run) := Some( "lowerthirds.LowerThirdsEditor" )
 
-//retrieveManaged := true
 
-//offline := true
+assemblySettings
 
-publishTo := Some( Resolver.sftp( "private", "hyperreal.ca", "/var/www/hyperreal.ca/html/maven2" ) )
+mainClass in assembly := Some( "lowerthirds.LowerThirdsEditor" )
+
+jarName in assembly := "lteditor-" + version.value + ".jar"
+
+
+publishTo := Some( Resolver.sftp( "private", "hyperreal.ca", "/var/www/hyperreal.ca/maven2" ) )
 
 publishArtifact in Test := false
 

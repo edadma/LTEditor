@@ -640,7 +640,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 	{
 		def pathValid( name: String ) =
 			name != "" && name != "." && name != ".." && name != " "*name.length &&
-			!name.exists( """/\<>:"|?*\t\r\n""" contains _ )
+			!name.exists( "/\\<>:\"|?*\t\r\n" contains _ )
 
 	val boxes = new ListBuffer[(String, Box)]
 
