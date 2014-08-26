@@ -100,8 +100,8 @@ class TS extends YAML
 
 object LowerThirdsEditor extends SimpleSwingApplication
 {
-	val VERSION = "0.1"
-	val DATE = "Feb 2, 2014"
+	val VERSION = "0.3"
+	val DATE = "Aug 26, 2014"
 	val SHOW_TUTORIAL = false
 	val IMAGE_WIDTH = 1280
 	val IMAGE_HEIGHT = 720
