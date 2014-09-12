@@ -1,1 +1,1 @@
-rsync -azP -e ssh --delete /home/ed/projects/funl/target/scala-2.11/lteditor-*.jar ed@hyperreal.ca:/var/www/hyperreal.cag/releases
+rsync -azP -e ssh --delete /home/ed/projects/LTEditor/target/scala-2.11/lteditor-*.jar ed@hyperreal.ca:/var/www/hyperreal.ca/releases

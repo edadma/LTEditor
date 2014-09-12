@@ -8,9 +8,10 @@
 \font cmunorm-bold-30 \centerline {Lower Thirds Editor}
 \font cmunorm-plain-26 \centerline {Version ${VERSION}}
 \font cmunorm-plain-24 \centerline {${DATE}}
-\vskip20 \font cmunrm-plain-24 \m Copyright \copyright\ 2014 by Edward A.\ Maxedon, Sr. All rights reserved.
+\vskip20 \font cmunrm-plain-24 \m Copyright \copyright\ 2014 by Edward A.\ Maxedon, Sr.
 
 \vskip20 \font rmfont
-This is a simple editor and image file renderer for adding text to videos. This software may be freely used and distributed {\s{without charge}} for any purpose that is non-commercial.
+This is a simple text editor and image file renderer for adding text to videos. This software may be freely used and distributed {\s{without charge}} under the terms of the Gnu Public License (GPL) Version 3.
 
-\vskip40 \i{\centerline{All glory belongs to the Most High God}\centerline{and the Lord Jesus Christ}}
+\vskip40 \i{\centerline {All glory belongs to the Most High God}
+            \centerline {and the Lord Jesus Christ}}
