@@ -4,7 +4,7 @@ import LaikaKeys._
 
 name := "LTEditor"
 
-version := "0.4"
+version := "0.5"
 
 scalaVersion := "2.11.2"
 
@@ -19,8 +19,8 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-swing" % "1.0.1"
 resolvers += "Hyperreal Repository" at "http://hyperreal.ca/maven2"
 
 libraryDependencies ++= Seq(
-	"org.lteditor" %% "typesetter" % "0.3",
-	"org.lteditor" %% "markup" % "0.3"
+	"org.lteditor" %% "typesetter" % "0.4",
+	"org.lteditor" %% "markup" % "0.4"
 	)
 
 mainClass in (Compile, packageBin) := Some( "lowerthirds.LowerThirdsEditor" )
