@@ -100,8 +100,8 @@ class TS extends YAML
 
 object LowerThirdsEditor extends SimpleSwingApplication
 {
-	val VERSION = "0.5"
-	val DATE = "Sep 15, 2014"
+	val VERSION = "0.6"
+	val DATE = "Oct 21, 2014"
 	val SHOW_TUTORIAL = false
 	val IMAGE_WIDTH = 1280
 	val IMAGE_HEIGHT = 720
@@ -203,7 +203,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 									} )
 							contents +=
 								new MenuItem(
-									Action( "Export" )
+									Action( "Export All" )
 									{
 									val file = textChooser.selectedFile
 
@@ -211,6 +211,26 @@ object LowerThirdsEditor extends SimpleSwingApplication
 											messages.text = "can't export: no file has been chosen; do a save"
 										else
 											export( file, boxes, IMAGE_WIDTH, IMAGE_HEIGHT )
+									} )
+							contents +=
+								new MenuItem(
+									Action( "Export Current" )
+									{
+									val file = textChooser.selectedFile
+
+										if (file eq null)
+											messages.text = "can't export: no file has been chosen; do a save"
+										else
+										{
+										val title = overlayFrame.contents.head.asInstanceOf[TabbedPane].selection.page.title
+										
+											boxes.find( _._1 == title ) match
+											{
+												case None => messages.text = "can't export: '" + title + "' not found"
+												case Some( box ) =>
+													export( file, List(box), IMAGE_WIDTH, IMAGE_HEIGHT )
+											}
+										}
 									} )
 							contents +=
 								new MenuItem(
@@ -336,7 +356,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 
 			val map =
 				Map (
-					"fs" -> "/",//System.getProperties.getProperty( "file.separator" ),
+					"fs" -> "/",
 					"fonts" -> "resources${fs}",
 					"cmttf" -> "${fonts}cm-unicode-0.7.0${fs}",
 					"VERSION" -> VERSION,
@@ -633,7 +653,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 			ImageIO.write( img, "PNG", new File(parent, file + ".png") )
 		}
 
-		messages.text = "Done exporting"
+		messages.text = "Exported " + (if (images.length > 1) (images.length + " images") else ("'" + images.head._1 + "'"))
 	}
 
 	def typeset( lines: Iterator[String], boxWidth: Int, boxHeight: Int ) =
