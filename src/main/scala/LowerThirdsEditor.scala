@@ -100,8 +100,8 @@ class TS extends YAML
 
 object LowerThirdsEditor extends SimpleSwingApplication
 {
-	val VERSION = "0.6"
-	val DATE = "Oct 21, 2014"
+	val VERSION = "0.7"
+	val DATE = "Nov 1, 2014"
 	val SHOW_TUTORIAL = false
 	val IMAGE_WIDTH = 1280
 	val IMAGE_HEIGHT = 720
@@ -210,7 +210,10 @@ object LowerThirdsEditor extends SimpleSwingApplication
 										if (file eq null)
 											messages.text = "can't export: no file has been chosen; do a save"
 										else
+										{
+											delete( file )
 											export( file, boxes, IMAGE_WIDTH, IMAGE_HEIGHT )
+										}
 									} )
 							contents +=
 								new MenuItem(
@@ -628,7 +631,7 @@ object LowerThirdsEditor extends SimpleSwingApplication
 		}
 	}
 
-	def export( input: File, images: List[(String, Box)], imageWidth: Int, imageHeight: Int )
+	def delete( input: File )
 	{
 	val parent = input.getParentFile
 	val pngfilter =
@@ -638,6 +641,11 @@ object LowerThirdsEditor extends SimpleSwingApplication
 		}
 
 		parent.listFiles( pngfilter ) foreach (_.delete)
+	}
+	
+	def export( input: File, images: List[(String, Box)], imageWidth: Int, imageHeight: Int )
+	{
+	val parent = input.getParentFile
 
 		for ((file, box) <- images)
 		{
